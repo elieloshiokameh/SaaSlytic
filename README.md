@@ -1,4 +1,4 @@
-# Shopify Sales Reporting Micro-SaaS
+# SaaSlytic
 
 ## 🚀 Overview
 
