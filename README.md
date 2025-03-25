@@ -1,147 +1,208 @@
-# SaaSlytic
+# SaaSlytic - SaaS Analytics Platform
 
-## 🚀 Overview
+## Mission
+SaaSlytic's mission is to democratize data-driven decision making for SaaS businesses by providing an intuitive, comprehensive analytics platform that helps companies understand their growth metrics, predict customer behavior, and optimize their business operations.
 
-This project is a micro-SaaS application that integrates with the Shopify API to generate sales reports and send automated email reports to merchants. Users can also manage their subscription using Stripe.
+## The Problem
+SaaS businesses face several challenges in managing their operations:
 
-## 📁 Project Structure
+1. **Complex Metrics**: SaaS companies need to track multiple interconnected metrics (MRR, Churn, LTV, CAC) but often struggle to understand their relationships and implications.
 
-```shopify-sales-reports/
-│── backend/                  # Backend (Express.js + Node.js)
-│   ├── controllers/          # API Controllers
-│   │   ├── shopifyController.js  # Shopify API logic
-│   │   ├── emailController.js    # Email sending logic
-│   │   ├── subscriptionController.js  # Stripe subscriptions
-│   ├── models/               # Database models (MongoDB/PostgreSQL)
-│   ├── routes/               # Express.js routes
-│   ├── config/               # Configurations (DB, API Keys)
-│   ├── server.js             # Main backend server
-│── frontend/                 # Frontend (React + Vite)
-│   ├── src/
-│   │   ├── components/       # React components
-│   │   ├── pages/            # Pages (Dashboard, Reports, Subscription)
-│   │   ├── services/         # API request handlers
-│   │   ├── App.js            # Main React App
-│   │   ├── index.js          # React entry point
-│   ├── vite.config.js        # Vite Configuration
-│── .env                      # Environment Variables
-│── package.json              # Project Dependencies
-│── README.md                 # Documentation
+2. **Reactive Decision Making**: Many businesses make decisions based on historical data rather than predictive insights, missing opportunities for proactive optimization.
+
+3. **Data Fragmentation**: Companies often have their data spread across multiple tools, making it difficult to get a unified view of their business performance.
+
+4. **High Churn Rates**: The SaaS industry faces an average churn rate of 5-7%, with many companies struggling to identify at-risk customers before they leave.
+
+## Our Solution
+SaaSlytic addresses these challenges by providing:
+
+1. **Unified Analytics Dashboard**
+   - All key metrics in one place
+   - Real-time data integration
+   - Customizable views for different stakeholders
+
+2. **Predictive Analytics**
+   - Early warning system for potential churn
+   - Revenue forecasting based on historical patterns
+   - Customer lifetime value predictions
+
+3. **Actionable Insights**
+   - Clear recommendations for improvement
+   - Automated alerts for critical metrics
+   - Custom reporting for different business needs
+
+4. **Subscription Intelligence**
+   - Detailed analysis of subscription patterns
+   - Automated plan optimization suggestions
+   - Customer segmentation based on behavior
+
+## Why SaaSlytic?
+
+Unlike traditional analytics tools, SaaSlytic is specifically designed for SaaS businesses with:
+
+- **SaaS-Specific Metrics**: Focused on metrics that matter most to subscription businesses
+- **Predictive Capabilities**: Built-in machine learning models for forecasting and churn prediction
+- **Easy Integration**: Seamless connection with popular SaaS tools and platforms
+- **Affordable Pricing**: Competitive pricing tiers that scale with your business
+- **No Technical Expertise Required**: User-friendly interface designed for business users
+
+## Features
+
+### Analytics Dashboard
+- Real-time key metrics tracking (MRR, Churn Rate, LTV)
+- Interactive charts and visualizations
+- Historical data analysis
+- Custom date range filtering
+
+### Predictive Analytics
+- Churn prediction
+- Revenue forecasting
+- Customer lifetime value analysis
+- Growth trend analysis
+
+### Subscription Management
+- Multiple subscription tiers (Free, Pro, Enterprise)
+- Easy plan switching
+- Subscription status tracking
+- Automated billing (coming soon)
+
+### User Management
+- Secure authentication
+- Company profile management
+- Role-based access control
+- Team collaboration features
+
+## Tech Stack
+
+### Frontend
+- React.js
+- Material-UI
+- Chart.js
+- Axios
+- React Router
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- JWT Authentication
+- Stripe (coming soon)
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v14 or higher)
+- MongoDB
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/saaslytic.git
+cd saaslytic
 ```
-## 🎯 Features
 
-🔐 Shopify Authentication: OAuth integration for accessing store data.
+2. Install backend dependencies:
+```bash
+cd backend
+npm install
+```
 
-📊 Sales Data Reports: Fetch sales and order data via Shopify API.
+3. Install frontend dependencies:
+```bash
+cd ../frontend
+npm install
+```
 
-📧 Automated Email Reports: Sends sales reports via SendGrid.
+4. Create a `.env` file in the backend directory:
+```env
+MONGODB_URI=mongodb://localhost:27017/saaslytic
+JWT_SECRET=your_jwt_secret
+PORT=5001
+```
 
-💳 Subscription Management: Handles payments with Stripe.
+5. Create a `.env` file in the frontend directory:
+```env
+VITE_API_URL=http://localhost:5001
+```
 
-📈 Dashboard UI: Frontend with charts and reports.
+### Running the Application
 
-🚀 Deployment Ready: Can be hosted on Vercel & Render.
+1. Start the backend server:
+```bash
+cd backend
+npm start
+```
 
-## ⚡ Installation & Setup
+2. Start the frontend development server:
+```bash
+cd frontend
+npm run dev
+```
 
-### 1️⃣ Clone the Repository
+3. Open your browser and navigate to `http://localhost:3000`
 
-* git clone https://github.com/elieloshiokmaeh/shopify-sales-reports.git 
-* cd shopify-sales-reports
+## Project Structure
 
-### 2️⃣ Install Dependencies
+```
+saaslytic/
+├── backend/
+│   ├── controllers/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── middleware/
+│   │   └── server.js
+│   ├── frontend/
+│   │   ├── src/
+│   │   │   ├── components/
+│   │   │   ├── pages/
+│   │   │   ├── contexts/
+│   │   │   └── App.js
+│   │   └── package.json
+│   └── README.md
+```
 
-* cd backend
-* npm install
-* cd ../frontend
-* npm install
+## API Endpoints
 
-### 3️⃣ Setup Environment Variables
+### Authentication
+- POST `/api/auth/register` - Register a new user
+- POST `/api/auth/login` - Login user
+- GET `/api/auth/me` - Get current user
 
-* Create a .env file in backend/:
+### User Profile
+- GET `/api/users/profile` - Get user profile
+- PUT `/api/users/profile` - Update user profile
 
-* SHOPIFY_API_KEY=your-shopify-api-key
-* SHOPIFY_SECRET_KEY=your-shopify-secret
-* REDIRECT_URI=http://localhost:5000/api/shopify/auth
-* SENDGRID_API_KEY=your-sendgrid-api-key
-* STRIPE_SECRET_KEY=your-stripe-secret-key
-* DATABASE_URL=your-database-url
+### Subscriptions
+- GET `/api/subscriptions` - Get current subscription
+- PUT `/api/subscriptions` - Update subscription plan
+- DELETE `/api/subscriptions` - Cancel subscription
 
-### 4️⃣ Start Backend
+### Analytics
+- GET `/api/analytics/metrics` - Get key metrics
+- GET `/api/analytics/predictions` - Get predictions
 
-* cd backend
-* npm start
+## Contributing
 
-### 5️⃣ Start Frontend
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-* cd frontend
-* npm run dev
+## License
 
-## 🚀 API Endpoints
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-  Shopify API
+## Support
 
-  GET /api/shopify/auth → Redirects to Shopify OAuth login
+For support, email support@saaslytic.com or join our Slack channel.
 
-  GET /api/shopify/sales-data → Fetches sales data
+## Acknowledgments
 
-  Email Reports API
-
-POST /api/email/send-report → Sends sales report via email
-
-Stripe Subscription API
-
-POST /api/subscription/create-checkout-session → Creates Stripe checkout session
-
-GET /api/subscription/status → Checks user subscription status
-
-## 📚 Technologies Used
-
-Frontend: React, Vite, Tailwind CSS
-
-Backend: Node.js, Express.js
-
-Database: PostgreSQL / MongoDB (Supabase or Render DB)
-
-Authentication: Shopify OAuth
-
-Email Service: SendGrid
-
-Payments: Stripe
-
-Hosting: Vercel (Frontend), Render (Backend & Database)
-
-## 🌍 Deployment
-
-Frontend: Deploy on Vercel (vercel deploy)
-
-Backend: Deploy on Render (git push render main)
-
-Database: Use Supabase/PostgreSQL on Render
-
-## 🛠 Next Steps
-
-✅ Add CSV Export for sales data
-
-✅ Add Graph Reports using Chart.js
-
-✅ Improve UI & UX
-
-## 🎯 Contributing
-
-Fork the repository 🍴
-
-Create a feature branch (git checkout -b feature-name)
-
-Commit your changes (git commit -m 'Added feature')
-
-Push to the branch (git push origin feature-name)
-
-Open a Pull Request 🚀
-
-## 📞 Support
-
-For issues, create a GitHub Issue or reach out via eliel.oshiokameh@gmail.com.
-
-## 🚀 Let's build this Shopify micro-SaaS together! 🚀
-
+- Material-UI for the beautiful components
+- Chart.js for the amazing charts
+- MongoDB for the database
+- Express.js for the backend framework 
